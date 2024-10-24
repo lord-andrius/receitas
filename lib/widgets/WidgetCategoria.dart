@@ -15,11 +15,13 @@ class WidgetCategoria extends StatelessWidget {
   @override
   Widget build(BuildContext contexto) {
     return InkWell(
-      radius: .5,
+      borderRadius: BorderRadius.circular(5),
       onTap: quandoClicar,
       child: Ink(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5), color: categoria.cor),
+            borderRadius: BorderRadius.circular(5),
+            color: categoria.cor
+          ),
         child: Center(child: Text(categoria.nome)),
       ),
     );
