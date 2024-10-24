@@ -11,11 +11,17 @@ class Categorias extends StatelessWidget {
       appBar: AppBar(
         title: Text('Categorias das receitas'),
       ),
-      body: GridView.count(
-          crossAxisCount: 2,
-          childAspectRatio: 2 / 3,
-          children: List<Widget>.generate(ListaCategorias.length,
-              (int indice) => WidgetCategoria(ListaCategorias[indice]))),
+      body: Container(
+          margin: EdgeInsets.all(5.0),
+          child: GridView.count(
+            crossAxisCount: 2,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 5,
+            children: List<Widget>.generate(ListaCategorias.length,
+                (int indice) => WidgetCategoria(ListaCategorias[indice])),
+          ),
+        ),
     );
   }
 }
