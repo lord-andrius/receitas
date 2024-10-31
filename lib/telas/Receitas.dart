@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:../modelos/Receita.dart';
-import 'package:../modelos/Categoria.dart';
-import 'package:../dados/dadosFalsos.dart';
-import 'package:../widgets/WidgetReceita.dart';
+import 'package:receitas/modelos/Receita.dart';
+import 'package:receitas/modelos/Categoria.dart';
+import 'package:receitas/dados/dadosFalsos.dart';
+import 'package:receitas/widgets/WidgetReceita.dart';
 
 class Receitas extends StatelessWidget {
-  final Categoria categoria;
-  Receitas({this.categoria, super.key}) {}
+  late final Categoria categoria;
+  Receitas({required this.categoria, super.key}) {}
 
   @override
   Widget build(BuildContext contexto) {
 
-    List<WidgetReceita> receitas = List<WidgetReceita>.generate(ListaReceitas.length, (int indice) => WidgetReceita(receita: ListaReceitas[indice]));
+    List<WidgetReceita> receitas = [];
+
+    ListaReceitas.forEach((receita) => {
+      if(receita.categorias.contains(this.categoria.id)) {
+        receitas.add(WidgetReceita(receita:receita))
+      }
+    });
+    
     late Widget conteudo;
 
     if(receitas.length < 1) {
